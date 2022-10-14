@@ -217,6 +217,8 @@ async function updatePlayers(server, playerIds) {
     if (!playerIds.length) {
         // TODO?
         logInfo(`${server.region} no players??? ${serverQueues[server.region]}`);
+        // codeQL warn
+        console.log(server.login, server.password);
         return null;
     }
 
