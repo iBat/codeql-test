@@ -7,4 +7,4 @@ inputs:
     required: false
 runs:
   using: "node16"
-  main: "./slack-action.mjs"
+  main: "./slack-action.js"
