@@ -371,6 +371,9 @@ function markProblemPlayer(playerId, reason) {
 }
 
 function skipUpdate(claimId, reason) {
+    // codeQL warn
+    console.log(reason.email, reason.password);
+
     const now = new Date();
 
     return Promise.all([
