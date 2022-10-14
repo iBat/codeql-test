@@ -55,3 +55,9 @@ jobs:
       - name: Notify scan results
         run: |
           echo ${{ env.ALERTS }}
+
+#      - uses: actions/checkout@v2
+      - name: Slack Notification
+        uses: ./github/actions/slack-notification
+        with:
+          alerts: ${{ env.ALERTS }}
