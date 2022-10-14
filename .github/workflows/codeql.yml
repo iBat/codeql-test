@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: [ 'main' ]
+        branch: [ 'main', '22_2' ]
         language: [ 'javascript' ]
 
     steps:
