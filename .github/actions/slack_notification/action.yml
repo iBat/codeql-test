@@ -5,6 +5,9 @@ inputs:
   alerts:
     description: Alerts JSON string.
     required: true
+  commit_oid:
+    description: commit oid.
+    required: true
 runs:
   using: "node16"
   main: "../../../slack-action.js"
