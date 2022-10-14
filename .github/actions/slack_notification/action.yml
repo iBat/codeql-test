@@ -1,10 +1,10 @@
-name: "CodeQL: Finish"
-description: "Finalize CodeQL database"
-author: "GitHub"
+name: "Slack notifications"
+description: "Slack notifications"
+author: "DevExpress"
 inputs:
-  check_name:
-    description: The name of the check run to add text to.
-    required: false
+  alerts:
+    description: Alerts JSON string.
+    required: true
 runs:
   using: "node16"
-  main: "./slack-action.js"
+  main: "../../slack-action.js"
