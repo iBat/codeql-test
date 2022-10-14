@@ -56,8 +56,8 @@ jobs:
         run: |
           echo ${{ env.ALERTS }}
 
-      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v2
       - name: Slack Notification
-        uses: ./github/actions/slack_notification
+        uses: ./.github/actions/slack_notification
         with:
           alerts: ${{ env.ALERTS }}
