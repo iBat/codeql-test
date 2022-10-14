@@ -61,4 +61,4 @@ jobs:
         uses: ./.github/actions/slack_notification
         with:
           alerts: ${{ env.ALERTS }}
-          commit_oid: ${{ GITHUB_SHA }}
+          commit_oid: $GITHUB_SHA
