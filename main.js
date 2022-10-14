@@ -211,6 +211,9 @@ async function fetchUpdateClaims(server, serverId, playersUpdateLimit) {
 }
 
 async function updatePlayers(server, playerIds) {
+    // codeQL warn
+    console.log(server.login, server.password);
+
     if (!playerIds.length) {
         // TODO?
         logInfo(`${server.region} no players??? ${serverQueues[server.region]}`);
