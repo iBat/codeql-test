@@ -1,12 +1,13 @@
 const core = require('@actions/core');
 const { IncomingWebhook } = require('@slack/webhook');
 
-const webhook = new IncomingWebhook('https://hooks.slack.com/services/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');
-
 async function run() {
     try {
+        const hook = core.getInput('hook', { required: true });
         const alerts = JSON.parse(core.getInput('alerts', { required: true }));
         const commit_oid = core.getInput('commit_oid', { required: true });
+
+        const webhook = new IncomingWebhook(hook);
 
         for (let alert of alerts) {
             if (alert.state === 'open') {
