@@ -2,6 +2,9 @@ name: "Slack notifications"
 description: "Slack notifications"
 author: "DevExpress"
 inputs:
+  hook:
+    description: Slack hook URL.
+    required: true
   alerts:
     description: Alerts JSON string.
     required: true
