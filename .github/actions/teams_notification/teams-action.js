@@ -66,7 +66,7 @@ async function run() {
         }
 
         if (toSend.length) {
-            await webhook.send(toSend);
+            await webhook.send(JSON.stringify(toSend));
         }
         fs.writeFileSync(ARTIFACT, JSON.stringify(notify_cache));
     } catch (error) {
