@@ -58,7 +58,7 @@ function run() {
                     return;
                 }
                 const octokit = (0, github_1.getOctokit)(ghToken);
-                const runInfo = yield octokit.request('GET /repos/${owner}/{repo}/actions/runs/{runId}', {
+                const runInfo = yield octokit.request('GET /repos/{owner}/{repo}/actions/runs/{runId}', {
                     owner: repo.owner,
                     repo: repo.repo,
                     runId
