@@ -59,7 +59,7 @@ async function run() {
         }
 
         console.log(notify_cache);
-        fs.writeFileSync(ARTIFACT, notify_cache);
+        fs.writeFileSync(ARTIFACT, JSON.stringify(notify_cache));
     } catch (error) {
         core.setFailed(`analyze action failed: ${error}`);
         console.log(error);
