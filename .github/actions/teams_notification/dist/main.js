@@ -140,7 +140,7 @@ function notifyFailedWorkflow(runInfo, webhook) {
                     'facts': [
                         {
                             'name': 'Repository',
-                            'value': repo
+                            'value': `${repo.owner}/${repo.repo}`
                         },
                         {
                             'name': 'Workflow',
