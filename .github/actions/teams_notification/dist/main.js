@@ -3,7 +3,7 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
     if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
+        desc = { enumerable: true, get: function() { return m[k]; } };
     }
     Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
@@ -45,7 +45,8 @@ function run() {
         try {
             const hook = core.getInput('hook_url', { required: true });
             const ghToken = core.getInput('bearer_token', { required: false });
-            const alerts = JSON.parse(core.getInput('alerts', { required: false }));
+            const alertsRaw = core.getInput('alerts', { required: false });
+            const alerts = alertsRaw && JSON.parse(alertsRaw);
             const onlyOnPush = core.getInput('only_on_push', { required: false }) === 'true';
             const webhook = new ms_teams_webhook_1.IncomingWebhook(hook);
             if (alerts) {
