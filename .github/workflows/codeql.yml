@@ -54,6 +54,7 @@ jobs:
 
       - name: Download notify artifact
         uses: actions/download-artifact@v3
+        if: always()
         with:
           name: notify
 
