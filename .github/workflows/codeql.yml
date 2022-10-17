@@ -68,6 +68,5 @@ jobs:
       - name: Teams Notification
         uses: ./.github/actions/teams_notification
         with:
-          hook: ${{ secrets.TEAMS_HOOK }}
+          hook_url: ${{ secrets.TEAMS_HOOK }}
           alerts: ${{ env.ALERTS }}
-          commit_oid: ${{ github.sha }}
