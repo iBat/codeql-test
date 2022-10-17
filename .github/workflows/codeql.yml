@@ -56,7 +56,7 @@ jobs:
         id: notify-cache
         with:
           path: notify.json
-          key: ${{ runner.os }}-${{ hashFiles('notify.json') }}
+          key: ${{ runner.os }}-notify.json
 
 #      - name: Slack Notification
 #        uses: ./.github/actions/slack_notification
