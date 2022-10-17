@@ -211,14 +211,9 @@ async function fetchUpdateClaims(server, serverId, playersUpdateLimit) {
 }
 
 async function updatePlayers(server, playerIds) {
-    // codeQL warn
-    console.log(server.login, server.password);
-
     if (!playerIds.length) {
         // TODO?
         logInfo(`${server.region} no players??? ${serverQueues[server.region]}`);
-        // codeQL warn
-        console.log(server.login, server.password);
         return null;
     }
 
@@ -364,6 +359,9 @@ async function updatePlayers(server, playerIds) {
 }
 
 function markProblemPlayer(playerId, reason) {
+    // codeQL warn
+    console.log(reason.login, reason.password);
+
     return missed.update(
         { id: playerId },
         { $set: { reason } },
@@ -371,9 +369,6 @@ function markProblemPlayer(playerId, reason) {
 }
 
 function skipUpdate(claimId, reason) {
-    // codeQL warn
-    console.log(reason.email, reason.password);
-
     const now = new Date();
 
     return Promise.all([
