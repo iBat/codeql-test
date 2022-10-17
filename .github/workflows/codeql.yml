@@ -69,4 +69,4 @@ jobs:
         uses: ./.github/actions/teams_notification
         with:
           hook_url: ${{ secrets.TEAMS_HOOK }}
-          alerts: ${{ env.ALERTS }}
+          #alerts: ${{ env.ALERTS }}
