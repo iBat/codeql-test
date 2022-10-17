@@ -1,0 +1,16 @@
+name: 'Teams notifications'
+description: 'Teams notifications'
+author: 'DevExpress'
+inputs:
+  hook:
+    description: Teams hook URL.
+    required: true
+  alerts:
+    description: Alerts JSON string.
+    required: true
+  commit_oid:
+    description: commit oid.
+    required: true
+runs:
+  using: 'node16'
+  main: './teams-action.js'

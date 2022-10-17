@@ -58,10 +58,16 @@ jobs:
           path: notify.json
           key: ${{ runner.os }}-${{ hashFiles('notify.json') }}
 
-      - name: Slack Notification
-        if: always()
-        uses: ./.github/actions/slack_notification
+#      - name: Slack Notification
+#        uses: ./.github/actions/slack_notification
+#        with:
+#          hook: ${{ secrets.SLACK_HOOK }}
+#          alerts: ${{ env.ALERTS }}
+#          commit_oid: ${{ github.sha }}
+
+      - name: Teams Notification
+        uses: ./.github/actions/teams_notification
         with:
-          hook: ${{ secrets.SLACK_HOOK }}
+          hook: ${{ secrets.TEAMS_HOOK }}
           alerts: ${{ env.ALERTS }}
           commit_oid: ${{ github.sha }}
