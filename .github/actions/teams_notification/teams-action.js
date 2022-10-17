@@ -16,17 +16,16 @@ async function run() {
         }
 
         const webhook = new IncomingWebhook(hook);
-        const toSend = [];
 
         for (let alert of alerts) {
             if (alert.state === 'open') {
                 if (!notify_cache[alert.number]) {
                     notify_cache[alert.number] = true;
-                    toSend.push({
+                    await webhook.send({
                         '@type': 'MessageCard',
                         '@context': 'https://schema.org/extensions',
                         'summary': 'New security alert found',
-                        'themeColor': '0075FF',
+                        'themeColor': '#ff7500',
                         'sections': [
                             {
                                 'heroImage': {
@@ -54,7 +53,7 @@ async function run() {
                                         'value': alert.created_at.toLocaleString()
                                     },
                                     {
-                                        'name': 'Commit Found In:',
+                                        'name': 'Found In (or earlier):',
                                         'value': `[${commit_oid}](https://github.com/iBat/codeql-test/commit/${commit_oid})`
                                     },
                                 ]
@@ -65,9 +64,6 @@ async function run() {
             }
         }
 
-        if (toSend.length) {
-            await webhook.send(JSON.stringify(toSend));
-        }
         fs.writeFileSync(ARTIFACT, JSON.stringify(notify_cache));
     } catch (error) {
         core.setFailed(`analyze action failed: ${error}`);
