@@ -70,3 +70,4 @@ jobs:
         with:
           hook_url: ${{ secrets.TEAMS_HOOK }}
           #alerts: ${{ env.ALERTS }}
+          bearer_token: ${{ secrets.GITHUB_TOKEN }}
