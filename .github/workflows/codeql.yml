@@ -22,10 +22,10 @@ jobs:
         language: [ 'javascript' ]
 
     steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v3
-#        with:
-#          ref: ${{ matrix.branch }}
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ matrix.branch }}
 
 #      - name: Initialize CodeQL
 #        uses: github/codeql-action/init@v2
@@ -52,18 +52,12 @@ jobs:
           echo $RESPONSE >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - name: Download notify artifact
-        uses: actions/download-artifact@v3
+      - uses: actions/cache@v3
+        id: notify-cache
         with:
-          name: notify
+          path: notify.json
+          key: ${{ runner.os }}-${{ hashFiles('notify.json') }}
 
-      - name: Print notify.json
-        if: always()
-        run: |
-          cat notify.json
-
-      - uses: actions/checkout@v2
-        if: always()
       - name: Slack Notification
         if: always()
         uses: ./.github/actions/slack_notification
@@ -71,11 +65,3 @@ jobs:
           hook: ${{ secrets.SLACK_HOOK }}
           alerts: ${{ env.ALERTS }}
           commit_oid: $GITHUB_SHA
-
-      - name: Upload notify artifact
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: notify
-          path: notify.json
-          retention-days: 30
