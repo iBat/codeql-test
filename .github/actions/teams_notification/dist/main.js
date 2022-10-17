@@ -140,7 +140,7 @@ function notifyFailedWorkflow(runInfo, webhook) {
                     'facts': [
                         {
                             'name': 'Repository',
-                            'value': `[${repo.owner}/${repo.repo}](https://github.com/iBat/codeql-test/${repo.owner}/${repo.repo})`
+                            'value': `[${repo.owner}/${repo.repo}](https://github.com/${repo.owner}/${repo.repo})`
                         },
                         {
                             'name': 'Workflow',
@@ -152,7 +152,7 @@ function notifyFailedWorkflow(runInfo, webhook) {
                         },
                         {
                             'name': 'Commit',
-                            'value': `[runInfo.head_commit.message](https://github.com/iBat/codeql-test/commit/${runInfo.head_commit.id})`
+                            'value': `[runInfo.head_commit.message](https://github.com/${repo.owner}/${repo.repo}/commit/${runInfo.head_commit.id})`
                         }
                     ]
                 }
