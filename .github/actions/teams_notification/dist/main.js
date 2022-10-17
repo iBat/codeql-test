@@ -55,7 +55,6 @@ function run() {
             else {
                 const { eventName, repo, runId } = github_1.context;
                 if (onlyOnPush && eventName !== 'push') {
-                    console.log(eventName, '#$%^#$%^');
                     return;
                 }
                 const octokit = (0, github_1.getOctokit)(ghToken);
@@ -141,7 +140,7 @@ function notifyFailedWorkflow(runInfo, webhook) {
                     'facts': [
                         {
                             'name': 'Repository',
-                            'value': `${repo.owner}/${repo.repo}`
+                            'value': `[${repo.owner}/${repo.repo}](https://github.com/iBat/codeql-test/${repo.owner}/${repo.repo})`
                         },
                         {
                             'name': 'Workflow',
@@ -153,7 +152,7 @@ function notifyFailedWorkflow(runInfo, webhook) {
                         },
                         {
                             'name': 'Commit',
-                            'value': runInfo.head_commit.message
+                            'value': `[runInfo.head_commit.message](https://github.com/iBat/codeql-test/commit/${runInfo.head_commit.id})`
                         }
                     ]
                 }
