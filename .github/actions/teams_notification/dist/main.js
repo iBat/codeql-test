@@ -50,11 +50,11 @@ function run() {
             const onlyOnPush = core.getInput('only_on_push', { required: false }) === 'true';
             const webhook = new ms_teams_webhook_1.IncomingWebhook(hook);
             if (alerts) {
-                console.log('ALERTS', JSON.stringify(alerts));
+                console.log('ALERTS', alerts.length);
                 yield notifyCodeQlAlerts(alerts, webhook);
             }
             else {
-                console.log('NO ALERTS');
+                console.log('NO ALERTS', alertsRaw);
                 const { eventName, repo, runId } = github_1.context;
                 if (onlyOnPush && eventName !== 'push') {
                     return;
