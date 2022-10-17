@@ -54,16 +54,17 @@ jobs:
 
       - name: Download notify artifact
         uses: actions/download-artifact@v3
-        if: always()
         with:
           name: notify
 
       - name: Print notify.json
+        if: always()
         run: |
           cat notify.json
 
       - uses: actions/checkout@v2
       - name: Slack Notification
+        if: always()
         uses: ./.github/actions/slack_notification
         with:
           hook: ${{ secrets.SLACK_HOOK }}
