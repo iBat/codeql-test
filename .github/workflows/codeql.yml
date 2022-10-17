@@ -52,9 +52,14 @@ jobs:
           echo $RESPONSE >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
-      - name: Notify scan results
+      - name: Download notify artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: notify
+
+      - name: Print notify.json
         run: |
-          echo ${{ env.ALERTS }}
+          cat notify.json
 
       - uses: actions/checkout@v2
       - name: Slack Notification
@@ -63,3 +68,10 @@ jobs:
           hook: ${{ secrets.SLACK_HOOK }}
           alerts: ${{ env.ALERTS }}
           commit_oid: $GITHUB_SHA
+
+      - name: Upload notify artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: notify
+          path: notify.json
+          retention-days: 30
