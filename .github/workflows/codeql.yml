@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: 'CodeQL'
 
 on:
   push:
@@ -64,4 +64,4 @@ jobs:
         with:
           hook: ${{ secrets.SLACK_HOOK }}
           alerts: ${{ env.ALERTS }}
-          commit_oid: $GITHUB_SHA
+          commit_oid: ${{ github.sha }}

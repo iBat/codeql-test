@@ -1,6 +1,6 @@
-name: "Slack notifications"
-description: "Slack notifications"
-author: "DevExpress"
+name: 'Slack notifications'
+description: 'Slack notifications'
+author: 'DevExpress'
 inputs:
   hook:
     description: Slack hook URL.
@@ -12,5 +12,5 @@ inputs:
     description: commit oid.
     required: true
 runs:
-  using: "node16"
-  main: "../../../slack-action.js"
+  using: 'node16'
+  main: './slack-action.js'
