@@ -63,7 +63,7 @@ function run() {
                     repo: repo.repo,
                     runId
                 });
-                yield notifyFailedWorkflow(runInfo, webhook);
+                yield notifyFailedWorkflow(runInfo.data, webhook);
             }
         }
         catch (error) {
@@ -131,7 +131,6 @@ function notifyCodeQlAlerts(alerts, webhook) {
 function notifyFailedWorkflow(runInfo, webhook) {
     return __awaiter(this, void 0, void 0, function* () {
         const { repo, workflow } = github_1.context;
-        console.log(JSON.stringify(runInfo));
         yield webhook.send(JSON.stringify({
             '@context': 'https://schema.org/extensions',
             '@type': 'MessageCard',
