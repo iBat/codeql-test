@@ -13,7 +13,6 @@ async function run() {
 
         if (fs.existsSync(ARTIFACT)) {
             notify_cache = JSON.parse(fs.readFileSync(ARTIFACT));
-            console.log(`CACHED: ${notify_cache}`);
         }
 
         const webhook = new IncomingWebhook(hook);
@@ -26,27 +25,27 @@ async function run() {
                         text: `A Code Scanning alert from ${alert.tool.name} has just been found and created. Information about the alert can be found below.`,
                         attachments: [
                             {
-                                color: "danger",
+                                color: 'danger',
                                 title: `${alert.rule.id}`,
                                 title_link: `${alert.html_url}`,
                                 fields: [
                                     {
-                                        title: "Rule ID",
+                                        title: 'Rule ID',
                                         value: `${alert.rule.id}`,
                                         short: true,
                                     },
                                     {
-                                        title: "Rule Description",
+                                        title: 'Rule Description',
                                         value: `${alert.rule.description}`,
                                         short: true,
                                     },
                                     {
-                                        title: "Alert Severity:",
+                                        title: 'Alert Severity:',
                                         value: `${alert.rule.severity}`,
                                         short: true,
                                     },
                                     {
-                                        title: "Commit Found In:",
+                                        title: 'Commit Found In:',
                                         value: `${commit_oid}`,
                                         short: true,
                                     },
@@ -58,7 +57,6 @@ async function run() {
             }
         }
 
-        console.log(notify_cache);
         fs.writeFileSync(ARTIFACT, JSON.stringify(notify_cache));
     } catch (error) {
         core.setFailed(`analyze action failed: ${error}`);
