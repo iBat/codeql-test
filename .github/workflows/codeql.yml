@@ -65,6 +65,12 @@ jobs:
           key: ${{ runner.os }}-notify.json-${{ steps.get-date.outputs.date }}
           restore-keys: ${{ runner.os }}-notify.json
 
+      - name: Cat notify.json pre
+        id: cat-notify.json-pre
+        run: |
+          cat notify.json
+        shell: bash
+
 #      - name: Slack Notification
 #        uses: ./.github/actions/slack_notification
 #        with:
@@ -78,3 +84,9 @@ jobs:
           hook_url: ${{ secrets.TEAMS_HOOK }}
           alerts: ${{ env.ALERTS }}
 #          bearer_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Cat notify.json post
+        id: cat-notify.json-post
+        run: |
+          cat notify.json
+        shell: bash
