@@ -62,8 +62,8 @@ jobs:
         id: notify-cache
         with:
           path: notify.json
-          key: ${{ runner.os }}-notify.json-${{ steps.get-date.outputs.date }}
-          restore-keys: ${{ runner.os }}-notify.json
+          key: ${{ runner.os }}-notify.json-${{ matrix.branch }}-${{ matrix.language }}-${{ steps.get-date.outputs.date }}
+          restore-keys: ${{ runner.os }}-notify.json-${{ matrix.branch }}-${{ matrix.language }}, ${{ runner.os }}-notify.json
 
       - name: Cat notify.json pre
         id: cat-notify-json-pre
