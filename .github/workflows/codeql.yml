@@ -66,7 +66,7 @@ jobs:
           restore-keys: ${{ runner.os }}-notify.json
 
       - name: Cat notify.json pre
-        id: cat-notify.json-pre
+        id: cat-notify-json-pre
         run: |
           cat notify.json
         shell: bash
@@ -86,7 +86,7 @@ jobs:
 #          bearer_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cat notify.json post
-        id: cat-notify.json-post
+        id: cat-notify-json-post
         run: |
           cat notify.json
         shell: bash
