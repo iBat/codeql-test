@@ -68,7 +68,11 @@ jobs:
       - name: Cat notify.json pre
         id: cat-notify-json-pre
         run: |
+          if [ -f notify.json ]; then
           cat notify.json
+          else
+          echo not exists
+          fi
         shell: bash
 
 #      - name: Slack Notification
@@ -88,5 +92,9 @@ jobs:
       - name: Cat notify.json post
         id: cat-notify-json-post
         run: |
+          if [ -f notify.json ]; then
           cat notify.json
+          else
+          echo not exists
+          fi
         shell: bash
