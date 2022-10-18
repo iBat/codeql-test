@@ -52,11 +52,17 @@ jobs:
           echo $RESPONSE >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
 
+      - name: Get Date
+        id: get-date
+        run: |
+          echo "::set-output name=date::$(/bin/date -u "+%s")"
+        shell: bash
+
       - uses: actions/cache@v3
         id: notify-cache
         with:
           path: notify.json
-          key: ${{ runner.os }}-notify.json-$(date +%s)
+          key: ${{ runner.os }}-notify.json-${{ steps.get-date.outputs.date }}
           restore-keys: ${{ runner.os }}-notify.json
 
 #      - name: Slack Notification
