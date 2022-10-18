@@ -56,7 +56,7 @@ jobs:
         id: notify-cache
         with:
           path: notify.json
-          key: ${{ runner.os }}-notify.json-${{ github.sha }}
+          key: ${{ runner.os }}-notify.json-$(date +%s)
           restore-keys: ${{ runner.os }}-notify.json
 
 #      - name: Slack Notification
