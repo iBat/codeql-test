@@ -58,7 +58,7 @@ jobs:
           echo "::set-output name=date::$(/bin/date -u "+%s")"
         shell: bash
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: notify-cache
         with:
           path: notify.json
